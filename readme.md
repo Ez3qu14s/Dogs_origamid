@@ -1,1 +1,1 @@
-# Dogs - Uma rede social para cachorros
+# Dogs - uma rede social para cachorros
