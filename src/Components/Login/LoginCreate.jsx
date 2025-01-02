@@ -1,30 +1,30 @@
-import React from 'react';
-import Input from '../Forms/Input';
-import Button from '../Forms/Button';
-import Error from '../../Helper/Error';
-import useForm from '../../Hooks/useForm';
-import { USER_POST } from '../../api';
-import { UserContext } from '../../UserContext';
-import useFetch from '../../Hooks/useFetch';
+import React from 'react'
+import Error from '../../Helper/Error'
+import useFetch from '../../Hooks/useFetch'
+import useForm from '../../Hooks/useForm'
+import { UserContext } from '../../UserContext'
+import { USER_POST } from '../../api'
+import Button from '../Forms/Button'
+import Input from '../Forms/Input'
 
 const LoginCreate = () => {
-  const username = useForm();
-  const email = useForm('email');
-  const password = useForm();
+  const username = useForm()
+  const email = useForm('email')
+  const password = useForm()
 
-  const { userLogin } = React.useContext(UserContext);
-  const { loading, error, request } = useFetch();
+  const { userLogin } = React.useContext(UserContext)
+  const { loading, error, request } = useFetch()
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     const { url, options } = USER_POST({
       username: username.value,
       email: email.value,
       password: password.value,
-    });
+    })
 
-    const { response } = await request(url, options);
-    if (response.ok) userLogin(username.value, password.value);
+    const { response } = await request(url, options)
+    if (response.ok) userLogin(username.value, password.value)
   }
   return (
     <section className="animeLeft">
@@ -42,7 +42,7 @@ const LoginCreate = () => {
         <Error error={error} />
       </form>
     </section>
-  );
-};
+  )
+}
 
-export default LoginCreate;
+export default LoginCreate
